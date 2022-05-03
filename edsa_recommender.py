@@ -102,10 +102,13 @@ def main():
     # ------------- SAFE FOR ALTERING/EXTENSION -------------------
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
-        st.write("Describe your winning approach on this page")
 
-    # You may want to add more sections here for aspects such as an EDA,
-    # or to provide your business pitch.
+    file = 'solution_overview.txt'
+    with open(file, 'r') as f:
+        text = f.read()
+
+    st.markdown("<h3 style='text-align: center;'>Thought process</h3>", unsafe_allow_html=True)
+    st.markdown(f"<p align='justify'>{text}</p>", unsafe_allow_html=True)
 
 
 if __name__ == '__main__':
