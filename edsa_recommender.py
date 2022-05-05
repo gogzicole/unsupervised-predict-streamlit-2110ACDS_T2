@@ -109,7 +109,7 @@ def main():
     if page_selection == "Solution Overview":
         st.title("Solution Overview")
 
-        file = 'solution_overview.txt'
+        file = 'resources/markdown/solution_overview.txt'
         with open(file, 'r') as f:
             text = f.read()
 
@@ -120,7 +120,7 @@ def main():
     if page_selection == "About The Data":
         st.title("About The Project")
 
-        file = 'about_project.txt'
+        file = 'resources/markdown/about_project.txt'
         with open(file, 'r') as f:
             text = f.read()
 
