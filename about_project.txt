@@ -1,0 +1,29 @@
+You must have one time in your life wondered how your favourite browsers always give u a certain kinds of content as suggested view list,
+or how when you go on youtube to watch a video, and even before you search for anything you already have some suggested contents. Well this is no magic,
+neither is it a coincidence, the answer to the questions that might have lingered in your mind is recommender systems. In the examples given above,
+the recommendations comes from your previous searches or viewing history, of videos or contents you have given a thumbs up (in the context of `YouTube`). 
+These search engines use a kind of machine learning algorithm known as recommender systems to give suggestions of coontents they feel would appeal to a user, 
+and these systems are built by logically computing the similarity of contents previously viewed and enjoyed by a user and then suggesting those contents that
+are very similar to them.
+In this Solution we seek to exploit the several methods these recommender systems are built, and for this purpose we would be using a movies dataset that contains over 63 thousand movie collections and over 10,000,000 user ratings of these movies. 
+
+The dataset used in building these solutions consists of several million of user rated movies obtained from users of the online MovieLens movie recommendation service.
+The MovieLens dataset has long been used by industry and academic researchers to improve the performance of recommender systems"
+
+
+Available Data Files:
+
+	- links.csv - File providing a mapping between a MovieLens ID and associated IMDB and TMDB IDs.
+
+	- genome_tags.csv - user assigned tags for genome-related scores
+
+	- imdb_data.csv - Additional movie metadata scraped from IMDB using the links.csv file.
+
+	- tags.csv - User assigned for the movies within the dataset.
+
+	- train.csv - The training split of the dataset. Contains user and movie IDs with associated rating data.
+
+	- genome_scores.csv - a score mapping the strength between movies and tags assigned to them, i.e how well a tag explains a movie.
+
+
+**Toggle the Buttons Below to View Data**
