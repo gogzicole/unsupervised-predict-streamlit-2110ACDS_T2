@@ -35,7 +35,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 # Importing data
-# movies = pd.read_csv('resources/data/movies.csv', sep = ',')
+#movies = pd.read_csv('resources/data/movies.csv', sep = ',')
 movies = pd.read_csv('resources/data/content_data.csv')
 ratings = pd.read_csv('resources/data/ratings.csv')
 #movies.dropna(inplace=True)
@@ -62,6 +62,7 @@ ratings = pd.read_csv('resources/data/ratings.csv')
 
 # !! DO NOT CHANGE THIS FUNCTION SIGNATURE !!
 # You are, however, encouraged to change its content.  
+
 def content_model(movie_list,top_n=10):
     """Performs Content filtering based upon a list of movies supplied
        by the app user.
@@ -81,7 +82,7 @@ def content_model(movie_list,top_n=10):
     """
     # Initializing the empty list of recommended movies
     recommended_movies = []
-    # data = data_preprocessing(27000)
+    #data = data_preprocessing(27000)
     data = movies.copy()
     # Instantiating and generating the count matrix
     #count_vec = CountVectorizer()
