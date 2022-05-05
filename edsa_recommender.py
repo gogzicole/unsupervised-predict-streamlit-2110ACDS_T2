@@ -216,7 +216,7 @@ def main():
     if page_selection == "Landing Page":
         st.markdown(html_template, unsafe_allow_html=True)
         st.write('   ')
-        st.image('resources/imgs/landing_page.PNG',use_column_width=True) 
+        st.image('resources/imgs/landing_page.png',use_column_width=True) 
 
 
             
