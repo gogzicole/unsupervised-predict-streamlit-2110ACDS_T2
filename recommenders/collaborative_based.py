@@ -167,7 +167,7 @@ def collab_model(movie_list, top_n=10):
     top_indexes = np.setdiff1d(top_50_indexes, [idx_1, idx_2, idx_3])
     # Get titles of recommended movies
     recommended_movies = []
-    for i in top_indexes[:top_n]:
+    for i in top_indexes[1:top_n]:
         recommended_movies.append(
             list(movies_df[movies_df['movieId'] == i]['title']))
     # Return list of movies
