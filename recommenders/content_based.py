@@ -32,32 +32,33 @@ import os
 import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 # Importing data
-movies = pd.read_csv('resources/data/movies.csv', sep = ',')
+# movies = pd.read_csv('resources/data/movies.csv', sep = ',')
+movies = pd.read_csv('resources/data/content_data.csv')
 ratings = pd.read_csv('resources/data/ratings.csv')
-movies.dropna(inplace=True)
+#movies.dropna(inplace=True)
 
-def data_preprocessing(subset_size):
-    """Prepare data for use within Content filtering algorithm.
+# def data_preprocessing(subset_size):
+#     """Prepare data for use within Content filtering algorithm.
 
-    Parameters
-    ----------
-    subset_size : int
-        Number of movies to use within the algorithm.
+#     Parameters
+#     ----------
+#     subset_size : int
+#         Number of movies to use within the algorithm.
 
-    Returns
-    -------
-    Pandas Dataframe
-        Subset of movies selected for content-based filtering.
+#     Returns
+#     -------
+#     Pandas Dataframe
+#         Subset of movies selected for content-based filtering.
 
-    """
-    # Split genre data into individual words.
-    movies['keyWords'] = movies['genres'].str.replace('|', ' ')
-    # Subset of the data
-    movies_subset = movies[:subset_size]
-    return movies_subset
+#     """
+#     # Split genre data into individual words.
+#     movies['keyWords'] = movies['genres'].str.replace('|', ' ')
+#     # Subset of the data
+#     movies_subset = movies[:subset_size]
+#     return movies_subset
 
 # !! DO NOT CHANGE THIS FUNCTION SIGNATURE !!
 # You are, however, encouraged to change its content.  
@@ -80,10 +81,14 @@ def content_model(movie_list,top_n=10):
     """
     # Initializing the empty list of recommended movies
     recommended_movies = []
-    data = data_preprocessing(27000)
+    # data = data_preprocessing(27000)
+    data = movies.copy()
     # Instantiating and generating the count matrix
-    count_vec = CountVectorizer()
-    count_matrix = count_vec.fit_transform(data['keyWords'])
+    #count_vec = CountVectorizer()
+    count_vec = TfidfVectorizer(analyzer='word', ngram_range=(1,1),
+                                min_df=0, stop_words='english')
+    count_matrix = count_vec.fit_transform(data['combined'])
+
     indices = pd.Series(data['title'])
     cosine_sim = cosine_similarity(count_matrix, count_matrix)
     # Getting the index of the movie that matches the title
@@ -99,7 +104,7 @@ def content_model(movie_list,top_n=10):
     score_series_2 = pd.Series(rank_2).sort_values(ascending = False)
     score_series_3 = pd.Series(rank_3).sort_values(ascending = False)
     # Getting the indexes of the 10 most similar movies
-    listings = score_series_1.append(score_series_1).append(score_series_3).sort_values(ascending = False)
+    listings = score_series_1.append(score_series_2).append(score_series_3).sort_values(ascending = False)
 
     # Store movie names
     recommended_movies = []

@@ -31,7 +31,6 @@ import streamlit as st
 # Data handling dependencies
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Custom Libraries
 from utils.data_loader import load_movie_titles
@@ -40,7 +39,7 @@ from recommenders.collaborative_based import collab_model
 from recommenders.content_based import content_model
 from utils.eda import unique_genre
 # Data Loading
-title_list = load_movie_titles('resources/data/movies.csv')
+title_list = load_movie_titles('resources/data/content_data.csv')
 movie = pd.read_csv('resources/data/movies.csv')
 genre_data = pd.read_csv('resources/data/for_genres.csv')
 genre_list = unique_genre(genre_data)
@@ -69,9 +68,9 @@ def main():
 
         # User-based preferences
         st.write('### Enter Your Three Favorite Movies')
-        movie_1 = st.selectbox('Fisrt Option',title_list[14930:15200])
-        movie_2 = st.selectbox('Second Option',title_list[25055:25255])
-        movie_3 = st.selectbox('Third Option',title_list[21100:21200])
+        movie_1 = st.selectbox('Fisrt Option',title_list[:5000])
+        movie_2 = st.selectbox('Second Option',title_list[5000:10000])
+        movie_3 = st.selectbox('Third Option',title_list[10000:])
         fav_movies = [movie_1,movie_2,movie_3]
 
         # Perform top-10 movie recommendation generation
@@ -129,7 +128,7 @@ def main():
 
         if st.checkbox("Rating"):
             st.subheader("Movie Ratings Table")
-            st.image('resources/imgs/train.PNG')
+            st.image('resources/imgs/train.png')
 
         
         if st.checkbox("Movies"):
@@ -138,24 +137,24 @@ def main():
         
         if st.checkbox("Genome Score"):
             st.subheader("Scores Table")
-            st.image('resources/imgs/genome_scores.PNG')
+            st.image('resources/imgs/genome_scores.png')
         
 
         if st.checkbox("Genome Tags"):
             st.subheader("Score Tag Mappings")
-            st.image('resources/imgs/genome_tags.PNG')
+            st.image('resources/imgs/genome_tags.png')
 
         if st.checkbox("IMDB"):
             st.subheader("IMDB Movies")
-            st.image('resources/imgs/imdb.PNG')
+            st.image('resources/imgs/imdb.png')
 
         if st.checkbox("Links"):
             st.subheader("IMDB and TMDB maps")
-            st.image('resources/imgs/links.PNG',use_column_width=True)
+            st.image('resources/imgs/links.png',use_column_width=True)
 
         if st.checkbox("Tags"):
             st.subheader("User Assigned Tags")
-            st.image('resources/imgs/tags.PNG',use_column_width=True)
+            st.image('resources/imgs/tags.png',use_column_width=True)
 
     if page_selection == "Select Movie By Genre and Year":
         choices = ['By Genre','By Release Year']
@@ -195,7 +194,7 @@ def main():
 
         if st.checkbox("Ratings Proportions"):
             st.subheader("Proportion of Ratings in Dataset")
-            st.image('resources/imgs/eda/rating_proportion.PNG')
+            st.image('resources/imgs/eda/rating_proportion.png')
 
         
         if st.checkbox("Movies Budget Ranking"):
@@ -204,7 +203,7 @@ def main():
         
         if st.checkbox("Genres in the Dataset"):
             st.subheader("Genres")
-            st.image('resources/imgs/eda/genres_distribution.PNG')
+            st.image('resources/imgs/eda/genres_distribution.png')
 
 
     html_template = """
