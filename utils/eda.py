@@ -25,7 +25,6 @@ def unique_genre(x):
         for genres in x.genres.values[i].split():
             # add each genre to the set
             genre_store.update({genres})
-    print("The Total Number of Unique Genres in the Dataset are: {}".format(len(genre_store)))
     return list(genre_store)
 
 
